@@ -1,0 +1,73 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* 隐藏滚动条 */
+body {
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 1080px;
+  color: aliceblue;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 60% 10% 30%;
+  grid-template-areas:
+    'void void void'
+    'title-prefix info title-suffix'
+    'desc-prefix info desc-suffix';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/** 背景图片的遮罩层 */
+.image-wrapper::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(transparent 60%, #000000aa);
+}
+
+.image-info {
+  grid-area: info;
+  align-items: center;
+  opacity: 0;
+  animation: 0.2s ease-in 0s 1 forwards;
+}
+
+.image-desc {
+  grid-area: info;
+  width: 100%;
+  text-transform: capitalize;
+}
+
+.image-1 {
+  background-image: url('https://w.wallhaven.cc/full/3k/wallhaven-3k2myd.jpg');
+}
+.image-2 {
+  background-image: url('https://w.wallhaven.cc/full/73/wallhaven-73o16e.jpg');
+}
+.image-3 {
+  background-image: url('https://w.wallhaven.cc/full/lq/wallhaven-lqvezl.png');
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

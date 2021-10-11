@@ -1,0 +1,28 @@
+{
+  "name": "awsome-webpages",
+  "version": "1.0.0",
+  "description": "includes some awsome webpages with awsome effect and animation",
+  "main": "index.js",
+  "scripts": {
+    "test": "view",
+    "watch": "webpack watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruienger/awsome-webpages.git"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "Ruinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruienger/awsome-webpages/issues"
+  },
+  "homepage": "https://github.com/ruienger/awsome-webpages#readme",
+  "devDependencies": {
+    "html-loader": "^2.1.2",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
