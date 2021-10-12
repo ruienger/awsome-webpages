@@ -1,0 +1,34 @@
+main {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main::before {
+  background: url('https://w.wallhaven.cc/full/3k/wallhaven-3k2myd.jpg') no-repeat center;
+}
+
+.card {
+  width: 60%;
+  height: 40%;
+  padding: 2em 3em;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: red;
+  filter: blur(100px);
+  margin: -30px;
+}

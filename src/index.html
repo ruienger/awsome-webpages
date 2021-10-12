@@ -5,9 +5,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awsome-Webpages</title>
+  <link rel="stylesheet" href="./common/normalize.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="./background-attachment.html">视差</a>
-  <a href="./a/index.html">a</a>
+  <header>
+    <div>
+      <div class="basic-btn selection-wrapper">
+        选择预览文件
+        <ul class="selection">
+          <li class="basic-btn"><a href="#/background-attachment.html">视差</a></li>
+          <li class="basic-btn"><a href="#/parallax-scrolling/index.html">a</a></li>
+          <li id="select-block">1</li>
+        </ul>
+      </div>
+    </div>
+    <div class="basic-btn">回到主页</div>
+    
+  </header>
+  <route-view></route-view>
 </body>
+<script>
+  window.onload = () => {
+    const routeView = document.getElementsByTagName('route-view')[0]
+    const selector = document.getElementsByClassName('selection')[0]
+    const selectBlock = document.getElementById('select-block')
+    selector.addEventListener('mouseover', (ev) => {
+      // selectBlock.style.top = ev.offsetY
+      // console.log(ev);
+    })
+    window.addEventListener('hashchange', ev => {
+      const iframe = document.createElement('iframe')
+      iframe.setAttribute('src', ev.newURL.replace('#/', ''))
+      routeView.replaceChildren(iframe)
+      // console.log(ev);
+    })
+  }
+</script>
 </html>
