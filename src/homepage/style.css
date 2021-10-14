@@ -85,7 +85,7 @@ header a {
   background: gray;
 }
 
-route-view > iframe {
+iframe {
   position: absolute;
   top: 0;
   left: 0;

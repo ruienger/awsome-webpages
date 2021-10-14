@@ -1,6 +1,7 @@
 const HTTP = require('http')
 const FS = require('fs')
 const PORT = 8080
+const { browseLocally } = require('@ruienger/browse')
 
 function readFileInSrc(path) {
   return FS.readFileSync(`src/${path}`, {
@@ -10,7 +11,7 @@ function readFileInSrc(path) {
 
 function getFileByUrl(url) {
   if (url !== '/') {
-    let file = readFileInSrc('404.html')
+    let file = readFileInSrc('homepage/404.html')
     try {
       file = readFileInSrc(url)
     } catch (e) {
@@ -18,12 +19,12 @@ function getFileByUrl(url) {
     }
     return file
   }
-  return readFileInSrc('index.html')
+  return readFileInSrc('homepage/index.html')
 }
 
 HTTP.createServer((request, respone) => {
   console.log(request.url);
   respone.end(getFileByUrl(request.url.replace('#/', '')))
-}).listen(PORT)
+}).listen(PORT, () => browseLocally(PORT))
 
 console.log(`website is avaliable on localhost:${PORT}`);
