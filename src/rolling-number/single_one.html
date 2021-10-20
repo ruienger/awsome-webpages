@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滚动数字</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../common/normalize.css">
+</head>
+
+<body>
+  <div class="scroller-window">
+    <div class="single-scroller">
+      <p>5</p>
+      <p>6</p>
+      <p>7</p>
+      <p>8</p>
+      <p>9</p>
+      <p>0</p>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+      <p>7</p>
+      <p>8</p>
+      <p>9</p>
+      <p>0</p>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+    </div>
+  </div>
+</body>
+<script>
+  let step = 5
+  let start = 0
+  let end = genRandomNum()
+
+  window.onload = ()  => {
+    const scroller = document.getElementsByClassName('single-scroller')[0]
+    
+    scroller.style.transitionDuration = '1s'
+    scroller.style.transform = `translateY(${getNormalTranslation(start)}%)`
+
+    setTimeout(() => {
+      start = end
+      end = genRandomNum()
+      scroller.style.transform = getFastestTranslation(start, end)
+    }, 1000)
+
+    scroller.addEventListener('transitionend', ({ target }) => {
+      reposition(target, end)
+    })
+
+  }
+
+  function reposition({ style }, num) {
+    const { transitionDuration } = style
+    const normalTranslation = `translateY(${getNormalTranslation(num)}%)`
+    if (style.transform !== normalTranslation) {
+      style.transitionDuration = '0s'
+      style.transform = normalTranslation
+      requestAnimationFrame(requestAnimationFrame.bind(null, () => {
+        style.transitionDuration = transitionDuration
+      }))
+    }
+  }
+
+  function genRandomNum() {
+    return Math.floor(Math.random() * 10)
+  }
+
+  function getFastestTranslation(start, end) {
+    let direction = 1; // -1 -> scroll up | 1 -> scroll down
+    let steps = 0;
+    let startTansition = getNormalTranslation(start)
+
+    if (start > end) {
+      // start - end 为 start 向 end 递减的次数
+      setDirectionAndSteps(Math.abs(start - end), Math.abs(10 - start + end));
+    } else if (start < end) {
+      // end - start 为 start 向 end 递减的次数
+      setDirectionAndSteps(Math.abs(10 - end + start), Math.abs(end - start));
+    }
+
+    startTansition += direction * steps * step
+
+    /**
+     * 比较上下方向，设置最短步数
+     * @param {*} dstep 向下滚动的步数
+     * @param {*} ustep 向上滚动的步数
+     */
+    function setDirectionAndSteps(dstep, ustep) {
+      const isUpperFaster = dstep > ustep
+      direction = isUpperFaster ? -1 : 1
+      steps = isUpperFaster ? ustep : dstep
+    }
+
+    return `translateY(${startTansition}%)`;
+  }
+
+  function getNormalTranslation(num) {
+    // 每个 p 元素占比为 5%, 第一个 0 在 25% 处出现
+    return -(25 + num * 5)
+  }
+</script>
+
+</html>
