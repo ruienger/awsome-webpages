@@ -10,7 +10,7 @@ function setAnimationName({ target, isIntersecting }) {
  * 为 target 设置背景滚动，随着鼠标滚轮方向滚动
  * @param {{ target: Node | Element }} entry 
  */
-function setBackgroundPosition({ target }) {
+function setBackgroundPosition(target) {
   target.style.backgroundPosition = `center calc(50% + ${0.1 * target.getBoundingClientRect().top}px)`
 }
 
@@ -26,15 +26,14 @@ function alertLicense() {
 window.onload = () => {
   const imageInfos = Array.from(document.getElementsByClassName('image-info'))
   const imageWrappers = Array.from(document.getElementsByClassName('image-wrapper'))
-  let wrappersInViewPort = []
 
-  // 给在 viewport 内的元素上动画
+  // 给进入或者退出 viewport 的元素上动画
   const imageInfoObserver = new IntersectionObserver(entries => {
     entries.forEach(setAnimationName)
   })
-  // 赋值进入 viewport 的元素并，scroll 事件将使用它们
+  // 使用 isInViewPort 标记在 viewport 中的元素，scroll 事件将使用它
   const imageWrappersObserver = new IntersectionObserver(entries => {
-    wrappersInViewPort = entries
+    entries.forEach(({ target, intersectionRatio }) => target.isInViewPort = intersectionRatio !== 0)
   })
 
   imageInfos.forEach(imageInfo => {
@@ -46,7 +45,11 @@ window.onload = () => {
   })
 
   window.addEventListener('scroll', () => {
-    wrappersInViewPort.forEach(setBackgroundPosition)
+    imageWrappers.forEach(wrapper => {
+      if (wrapper.isInViewPort) {
+        setBackgroundPosition(wrapper)
+      }
+    })
   })
 
   window.oncontextmenu = alertLicense

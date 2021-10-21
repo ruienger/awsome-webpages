@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 
 .image-wrapper {
   width: 100%;
-  height: 1080px;
+  height: 1000px;
   color: aliceblue;
   display: grid;
   grid-template-columns: 10% 80% 10%;
@@ -25,6 +25,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center center;
   position: relative;
 }
 
