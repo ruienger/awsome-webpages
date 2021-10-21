@@ -52,13 +52,13 @@ body::-webkit-scrollbar {
 }
 
 .image-1 {
-  background-image: url('https://w.wallhaven.cc/full/3k/wallhaven-3k2myd.jpg');
+  background-image: url('./uname.jpg');
 }
 .image-2 {
-  background-image: url('https://w.wallhaven.cc/full/73/wallhaven-73o16e.jpg');
+  background-image: url('./greatwall.jpg');
 }
 .image-3 {
-  background-image: url('https://w.wallhaven.cc/full/lq/wallhaven-lqvezl.png');
+  background-image: url('./gambling.png');
 }
 
 @keyframes fadeIn {

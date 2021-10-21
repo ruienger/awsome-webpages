@@ -4,7 +4,7 @@
   "description": "includes some awsome webpages with awsome effect and animation",
   "main": "index.js",
   "scripts": {
-    "server": "node src/index.js"
+    "server": "cd src && http-server -c-1 -p 8080 && start http://127.0.0.1:8080"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,10 @@
   },
   "homepage": "https://github.com/ruienger/awsome-webpages#readme",
   "devDependencies": {
-    "@ruienger/browse": "^1.0.1"
+    "@ruienger/browse": "^1.0.2"
   },
   "dependencies": {
-    "@ruienger/bimap": "^1.3.7"
+    "@ruienger/bimap": "^1.3.7",
+    "http-server": "^14.0.0"
   }
 }

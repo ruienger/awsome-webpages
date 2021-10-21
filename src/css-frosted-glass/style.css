@@ -6,7 +6,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('https://w.wallhaven.cc/full/73/wallhaven-73o16e.jpg') no-repeat center;
+  background: url('../parallax-scrolling/greatwall.jpg') no-repeat center;
 }
 
 .card {
@@ -27,7 +27,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('https://w.wallhaven.cc/full/73/wallhaven-73o16e.jpg') no-repeat center;
+  background: url('../parallax-scrolling/greatwall.jpg') no-repeat center;
   filter: blur(20px);
   margin: -30px;
   z-index: -1;
