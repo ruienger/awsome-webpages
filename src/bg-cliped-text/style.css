@@ -1,0 +1,34 @@
+.text-wrapper {
+  font-size: 2em;
+  text-align: center;
+  background-color: #99999988;
+  overflow: hidden;
+}
+
+.cliped-text {
+  color: transparent;
+  background-image: url(../parallax-scrolling/greatwall.jpg);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.fixed-text {
+  background-attachment: fixed;
+}
+
+.reverse-hub {
+  width: 100%;
+  position: relative;
+  color: transparent;
+  background: url('../parallax-scrolling/greatwall.jpg') no-repeat center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: hue-rotate(90deg);
+}
+
+.split-text {
+  color: transparent;
+  background-image: linear-gradient(120deg, #ffdb15, #ffdb15 49%, #5755e2 49%, #5755e2);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
