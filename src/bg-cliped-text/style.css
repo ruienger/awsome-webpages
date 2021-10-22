@@ -17,18 +17,9 @@
 }
 
 .reverse-hub {
-  width: 100%;
-  position: relative;
-  color: transparent;
-  background: url('../parallax-scrolling/greatwall.jpg') no-repeat center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: hue-rotate(90deg);
+  filter: hue-rotate(180deg);
 }
 
 .split-text {
-  color: transparent;
   background-image: linear-gradient(120deg, #ffdb15, #ffdb15 49%, #5755e2 49%, #5755e2);
-  background-clip: text;
-  -webkit-background-clip: text;
 }
